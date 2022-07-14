@@ -12,6 +12,14 @@ public class EchoServer {
 	public static void main(String[] args){
 		EventLoopGroup bossGroup = new NioEventLoopGroup(1);    //스레드를 1개 쓰는 Nio 이벤트 루프다.
 		EventLoopGroup workerGroup = new NioEventLoopGroup();   //인자가 없을경우 CPU 에 따른 스레드를 쓰게된다.
+
+		/**
+		 * Blocking 방식을 쓰고싶다면 아래코드와 같이 이용하면 된다. *
+		 EventLoopGroup bossGroup = new OioEventLoopGroup(1);
+		 EventLoopGroup workerGroup = new OioEventLoopGroup();
+		 ...
+		 b.channel(OioServerSocketChannel.class)
+		 */
 		try {
 			ServerBootstrap b = new ServerBootstrap();  //ServerBootstrap 을 빌더패턴으로 설정한다.
 			b.group(bossGroup, workerGroup)     //첫번째 아규먼트는 클라이언트 연결요청을 담당한다. 두번째 아규먼트는 연결된 소켓에 I/O를 담당한다.

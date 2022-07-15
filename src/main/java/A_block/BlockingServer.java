@@ -1,6 +1,5 @@
-package block;
+package A_block;
 
-import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
